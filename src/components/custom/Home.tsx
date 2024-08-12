@@ -36,7 +36,7 @@ const Home = () => {
               <img
                 src={user.avatar}
                 alt=""
-                className="w-full h-full rounded-full object-cover object-top"
+                className="w-full h-full rounded-full object-cover object-bottom"
               />
             </div>
             <div className="absolute w-full h-full border-2 rounded-full [backface-visibility:hidden] [transform:rotateY(180deg)] bg-green-500 shadow-xl">

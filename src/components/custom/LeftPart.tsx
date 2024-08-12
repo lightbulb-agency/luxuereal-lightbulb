@@ -19,7 +19,7 @@ const LeftPart = () => {
       <CardContent className="p-0 m-0 flex flex-col h-full justify-between">
         <div className="flex flex-col w-full items-center p-10">
 
-          <img src={user.avatar} className={`w-28 h-28 border-2 rounded-md my-8 p-2`} />
+          <img src={user.avatar} className={`w-28 h-28 border-2 rounded-md my-8 p-2 object-cover object-bottom`} />
 
           <h1 className="text-xl font-extrabold tracking-normal">
             {user.name}
