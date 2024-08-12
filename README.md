@@ -6,7 +6,7 @@
    `npm install` or `yarn`
 4. Run the project using this command:
    `npm run dev` or `yarn dev`
-5. Open `localhost:3000` on your favorite browser
+5. Open `localhost:5173` on your favorite browser
 
 # Contribute
 
