@@ -20,6 +20,8 @@ const getDevops: any = await supabase.from("skills").select().eq("user_id", user
 
 const getContacts: any = await supabase.from("contacts").select().eq("user_id", userid);
 
+const getExperiences: any = await supabase.from("experiences").select().eq("user_id", userid).order('id', { ascending: true });
+
 
 class DynamicValues {
     static initialInformation: IInitialInformation = {
@@ -79,60 +81,39 @@ class DynamicValues {
         },
         {
             text: "Experiences",
-            arr: [
-                {
-                    title: "Aqary International Group",
-                    desc: "Golang Developer",
-                    logo: "https://github.com/p32929/portfolio-v2/assets/6418354/92b039b2-9f42-4248-9803-b27e435d2d03"
-                },
-                {
-                    title: "Horizon Group of Companies",
-                    desc: "Front End Developer",
-                    logo: "https://github.com/p32929/portfolio-v2/assets/6418354/b385229a-3084-4952-84f3-134e627cc3e7"
-                },
-                {
-                    title: "6sense Bangladesh",
-                    desc: "Full Stack Developer",
-                    logo: "https://github.com/p32929/portfolio-v2/assets/6418354/80aebbb6-456a-4bba-8f32-eb48373cf76d"
-                },
-                {
-                    title: "Rich Information Technology",
-                    desc: "Lead Software Engineer",
-                    logo: "https://github.com/p32929/portfolio-v2/assets/6418354/6b35eee6-669c-42ee-934b-d9555176490b"
-                },
-                {
-                    title: "Fiverr",
-                    desc: "Freelance Software Engineer",
-                    logo: "https://cdn.worldvectorlogo.com/logos/fiverr-1.svg"
-                },
-                {
-                    title: "Upwork",
-                    desc: "Freelance Software Engineer",
-                    logo: "https://cdn.worldvectorlogo.com/logos/upwork-roundedsquare-1.svg"
-                },
-            ]
+            shouldNotSort: true,
+            arr: getExperiences['data'].map((experience: any) => ({
+                title: experience.company,
+                desc: `${experience.role} (${experience.from} ~ ${experience.to})`,
+                logo: experience.logo
+            }))
         }
     ]
 
     static skills: Array<ITitledListItem> = [
         {
             text: "Programming Languages",
+            shouldNotSort: true,
             arr: getLangs['data'].map((lang: Skills) =>{ return {title: lang.name, logo: lang.symbol} } )
         },
         {
             text: "Prefered Full-stacks",
+            shouldNotSort: true,
             arr: getFullstacks['data'].map((lang: Skills) =>{ return {title: lang.name, logo: lang.symbol} } )
         },
         {
             text: "Back-end Skills",
+            shouldNotSort: true,
             arr: getBackends['data'].map((lang: Skills) =>{ return {title: lang.name, logo: lang.symbol} } )
         },
         {
             text: "Front-end Skills",
+            shouldNotSort: true,
             arr: getFrontends['data'].map((lang: Skills) =>{ return {title: lang.name, logo: lang.symbol} } )
         },
         {
             text: "Database",
+            shouldNotSort: true,
             arr: getDevops['data'].map((lang: Skills) =>{ return {title: lang.name, logo: lang.symbol} } )
         },
     ]
