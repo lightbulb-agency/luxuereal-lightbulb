@@ -53,23 +53,23 @@ class DynamicValues {
             arr: [
                 {
                     title: "Name",
-                    desc: getUsers['data'][0]['name'],
+                    desc: getUsers?.data[0]['name'],
                     logo: "https://cdn-icons-png.flaticon.com/128/1077/1077012.png"
                 },
                 {
                     title: "Work Experience",
-                    desc: `${getInforms['data'][0]['experience']}+ years`,
+                    desc: `${getInforms?.data[0]['experience']}+ years`,
                     logo: "https://cdn-icons-png.flaticon.com/128/3281/3281289.png"
                 },
                 {
                     title: "Languages",
-                    desc: getInforms['data'][0]['language'],
+                    desc: getInforms?.data[0]['language'],
                     logo: "https://cdn-icons-png.flaticon.com/128/3898/3898150.png"
                 },
                 {
                     title: "Nationality",
-                    desc: getInforms['data'][0]['nationality'],
-                    logo: getInforms['data'][0]['flag']
+                    desc: getInforms?.data[0]['nationality'],
+                    logo: getInforms?.data[0]['flag']
                 },
                 {
                     title: "Resume",
@@ -82,7 +82,7 @@ class DynamicValues {
         {
             text: "Experiences",
             shouldNotSort: true,
-            arr: getExperiences['data'].map((experience: any) => ({
+            arr: getExperiences?.data.map((experience: any) => ({
                 title: experience.company,
                 desc: `${experience.role} (${experience.from} ~ ${experience.to})`,
                 logo: experience.logo
@@ -94,27 +94,27 @@ class DynamicValues {
         {
             text: "Programming Languages",
             shouldNotSort: true,
-            arr: getLangs['data'].map((lang: Skills) =>{ return {title: lang.name, logo: lang.symbol} } )
+            arr: getLangs?.data.map((lang: Skills) =>{ return {title: lang.name, logo: lang.symbol} } )
         },
         {
             text: "Prefered Full-stacks",
             shouldNotSort: true,
-            arr: getFullstacks['data'].map((lang: Skills) =>{ return {title: lang.name, logo: lang.symbol} } )
+            arr: getFullstacks?.data.map((lang: Skills) =>{ return {title: lang.name, logo: lang.symbol} } )
         },
         {
             text: "Back-end Skills",
             shouldNotSort: true,
-            arr: getBackends['data'].map((lang: Skills) =>{ return {title: lang.name, logo: lang.symbol} } )
+            arr: getBackends?.data.map((lang: Skills) =>{ return {title: lang.name, logo: lang.symbol} } )
         },
         {
             text: "Front-end Skills",
             shouldNotSort: true,
-            arr: getFrontends['data'].map((lang: Skills) =>{ return {title: lang.name, logo: lang.symbol} } )
+            arr: getFrontends?.data.map((lang: Skills) =>{ return {title: lang.name, logo: lang.symbol} } )
         },
         {
             text: "Database",
             shouldNotSort: true,
-            arr: getDevops['data'].map((lang: Skills) =>{ return {title: lang.name, logo: lang.symbol} } )
+            arr: getDevops?.data.map((lang: Skills) =>{ return {title: lang.name, logo: lang.symbol} } )
         },
     ]
 
@@ -213,7 +213,7 @@ class DynamicValues {
     static contacts: Array<ITitledListItem> = [
         {
             text: "Contact me",
-            arr: getContacts['data'].map((contact: any) => { return {
+            arr: getContacts?.data.map((contact: any) => { return {
                 title: contact.toolname,
                 logo: contact.logo,
                 desc: contact.username,

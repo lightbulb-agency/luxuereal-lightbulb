@@ -22,10 +22,10 @@ const App = () => {
   }
 
   useEffect(() => {
-    getUser();
     setTimeout(() => {
       setLoaded(1);
     }, 3000);
+    getUser();
   }, []);
 
   return (
