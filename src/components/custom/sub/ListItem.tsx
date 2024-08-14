@@ -19,7 +19,7 @@ const LinkIcon: React.FC<LinkIconProps> = (props) => {
   const { url } = props;
 
   const isLinkString = () => {
-    const linkStrings = ["http", "skype:", "mailto:"];
+    const linkStrings = ["http", "https", "skype:", "mailto:"];
 
     for (var i = 0; i < linkStrings.length; i++) {
       if (
@@ -87,13 +87,13 @@ const ListItem: React.FC<Props> = (props) => {
 
   return (
     <div className="w-full sm:w-full md:w-1/2 xl:w-1/2 2xl:w-1/3 p-1">
-      <Card className="h-full flex flex-row w-full p-4 items-center backdrop-blur-[2px]" onClick={onCardClicked}>
-        <div className="h-8 flex min-h-8">
+      <Card className="h-full flex flex-row justify-between w-full p-4 items-center backdrop-blur-[2px]" onClick={onCardClicked}>
+        <div className="h-8 min-w-10 flex min-h-8">
 
           <LazyLoadImage className="mr-4 object-cover" src={item.logo} />
 
         </div>
-        <div className="flex flex-col ml-3 gap-y-1">
+        <div className="flex flex-col ml-3 gap-y-1 flex-grow">
           <CardTitle>{item.title}</CardTitle>
           <CardDescription>{item.desc}</CardDescription>
         </div>

@@ -22,6 +22,8 @@ const getContacts: any = await supabase.from("contacts").select().eq("user_id", 
 
 const getExperiences: any = await supabase.from("experiences").select().eq("user_id", userid).order('id', { ascending: true });
 
+const getProjects: any = await supabase.from("projects").select().eq("user_id", userid).order('name', { ascending: true });
+
 
 class DynamicValues {
     static initialInformation: IInitialInformation = {
@@ -121,92 +123,12 @@ class DynamicValues {
     static projects: Array<ITitledListItem> = [
         {
             text: "Web Apps",
-            arr: [
-                {
-                    title: "Duas",
-                    link: "https://p32929.github.io/duas/",
-                    logo: "https://p32929.github.io/duas/favicon.png",
-                    desc: "A collection of duas I try to regularly recite - created using flutter web",
-
-                },
-                {
-                    title: "dobd.xyz",
-                    link: "https://admui.vercel.app",
-                    logo: "https://admui.vercel.app/android-chrome-512x512.png",
-                    desc: "Best online downloader for YouTube, Facebook, Instagram, Tiktok and more",
-
-                },
-                {
-                    title: 'StartPage',
-                    logo: 'https://cdn.iconscout.com/icon/premium/png-128-thumb/homepage-2580329-2151669.png',
-                    desc: 'A minimalistic custom browser startpage that can be configured to your needs. ',
-                    link: 'https://p32929.github.io/startpage/'
-                },
-                {
-                    title: "s3cr3tm3",
-                    link: "https://s3cr3tm3.netlify.app/",
-                    logo: "https://user-images.githubusercontent.com/6418354/173877444-59dbdd3d-1b5d-4b92-ad53-30fada9362d2.png",
-                    desc: "Share secret messages secretely",
-
-                },
-                {
-                    title: 'OrderZesty',
-                    logo: 'https://orderzesty.com/wp-content/uploads/2021/10/Zesty-icon@3x-300x300.png',
-                    desc: 'Personal chef service delivering fresh signature meals.',
-                    link: 'https://orderzesty.com/',
-
-                },
-                {
-                    title: 'DramaDB',
-                    logo: 'https://dramadb.vercel.app/apple-icon.png',
-                    desc: 'A serverless hobby project that lets you filter Asian drama by country, genre, status, year and popularity',
-                    link: 'https://dramadb.vercel.app/'
-                },
-                {
-                    title: 'Sh0Sh0',
-                    logo: 'https://github.com/3r4y/react-portfolio-template/assets/6418354/a159e1d8-fabc-4f58-9391-0c3be4d14d7e',
-                    desc: 'A beautifully created Absolutely FREE URL shortener for everyone made using React Shadcn Firebase. ',
-                    link: 'https://sh0sh0.netlify.app/',
-                },
-                {
-                    title: "TheRealWorldFree",
-                    logo: "https://framerusercontent.com/images/Tttp7tCHSlFL4GgIF783y9wn7vQ.webp",
-                    desc: "Enjoy the real world for free :)",
-                    link: "https://trwfree.vercel.app/"
-                },
-                {
-                    title: "BreakingMars",
-                    logo: "https://github.com/p32929/portfolio-v2/assets/6418354/8b6c5a1c-fc31-44a8-822e-73814ff57ac3",
-                    desc: '#1 Leading & Effortless Prospect Perceiving Platform',
-                    link: "https://web.archive.org/web/20220413085335/https://www.breakingmars.com/"
-                },
-                {
-                    title: "Voomnow",
-                    desc: "Next generation audio recorder",
-                    logo: "https://user-images.githubusercontent.com/6418354/173876916-e27cb77f-49f1-4190-be54-4c1ddaa2973d.svg",
-                    link: "https://web.archive.org/web/20220326215025/https://www.voomnow.com/"
-                },
-                {
-                    title: 'Shajao',
-                    logo: 'https://sdn.signalhire.co/storage/company/1dfc/9704/f9d3/ff49/cdce/31bb/c4d7/0628.webp',
-                    desc: 'Framing Happiness',
-                    link: "https://web.archive.org/web/20191222090655/https://shajao.com/"
-                },
-                {
-                    title: 'ChargeOnSite',
-                    logo: 'https://static.wixstatic.com/media/182a81_c4e4ee2bac6d4389a866239475519bdf~mv2.png/v1/fill/w_192%2Ch_192%2Clg_1%2Cusm_0.66_1.00_0.01/182a81_c4e4ee2bac6d4389a866239475519bdf~mv2.png',
-                    desc: 'Charge OnSite',
-                    link: "https://www.chargeonsite.com/",
-                },
-                {
-                    title: 'MathFinity',
-                    logo: 'https://p32929.github.io/mathfinity/icons/Icon-192.png',
-                    desc: 'Simple, infinite & fun math game for everyone',
-                    link: "https://p32929.github.io/mathfinity/",
-
-                },
-
-            ]
+            arr: getProjects?.data.map((project: any) => ({
+                title: project.name,
+                link: `${window.location.href}projects/${project.id}`,
+                logo: project.logo,
+                desc: project.description
+            }))
         }
     ]
 
